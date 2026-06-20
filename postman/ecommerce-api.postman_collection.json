@@ -1,0 +1,720 @@
+{
+  "info": {
+    "name": "Workintech FE E-Commerce API",
+    "description": "Postman collection for roles, categories, products, signup, login, verify, address, credit card and order endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Roles - Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/roles",
+          "host": ["{{baseUrl}}"],
+          "path": ["roles"]
+        }
+      }
+    },
+    {
+      "name": "Categories - Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": ["{{baseUrl}}"],
+          "path": ["categories"]
+        }
+      }
+    },
+    {
+      "name": "Products - Get All",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"]
+        }
+      }
+    },
+    {
+      "name": "Products - Get By Id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products/{{productId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["products", "{{productId}}"]
+        }
+      }
+    },
+    {
+      "name": "Products - Category",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?category=2",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "category",
+              "value": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Filter",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?filter=siyah",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "filter",
+              "value": "siyah"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Sort Price Desc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?sort=price:desc",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "sort",
+              "value": "price:desc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Sort Price Asc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?sort=price:asc",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "sort",
+              "value": "price:asc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Sort Rating Desc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?sort=rating:desc",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "sort",
+              "value": "rating:desc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Sort Rating Asc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?sort=rating:asc",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "sort",
+              "value": "rating:asc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Category Filter Sort",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?category=2&filter=siyah&sort=price:desc",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "category",
+              "value": "2"
+            },
+            {
+              "key": "filter",
+              "value": "siyah"
+            },
+            {
+              "key": "sort",
+              "value": "price:desc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Pagination Page 1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?limit=25&offset=0",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "25"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Pagination Page 2",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?limit=25&offset=25",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "25"
+            },
+            {
+              "key": "offset",
+              "value": "25"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Pagination Page 3",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?limit=25&offset=50",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "25"
+            },
+            {
+              "key": "offset",
+              "value": "50"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Products - Category Filter Sort Pagination",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/products?category=2&filter=siyah&sort=price:desc&limit=25&offset=25",
+          "host": ["{{baseUrl}}"],
+          "path": ["products"],
+          "query": [
+            {
+              "key": "category",
+              "value": "2"
+            },
+            {
+              "key": "filter",
+              "value": "siyah"
+            },
+            {
+              "key": "sort",
+              "value": "price:desc"
+            },
+            {
+              "key": "limit",
+              "value": "25"
+            },
+            {
+              "key": "offset",
+              "value": "25"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Signup - Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Customer\",\n  \"email\": \"test.customer.{{$timestamp}}@example.com\",\n  \"password\": \"Test123!\",\n  \"role_id\": {{customerRoleId}}\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["signup"]
+        }
+      }
+    },
+    {
+      "name": "Signup - Store",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Store Owner\",\n  \"email\": \"test.store.{{$timestamp}}@example.com\",\n  \"password\": \"Test123!\",\n  \"role_id\": {{storeRoleId}},\n  \"store\": {\n    \"name\": \"Demo Store\",\n    \"phone\": \"05551234567\",\n    \"tax_no\": \"T1234V123456\",\n    \"bank_account\": \"TR120006200119000006672315\"\n  }\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["signup"]
+        }
+      }
+    },
+    {
+      "name": "Signup - Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Admin\",\n  \"email\": \"test.admin.{{$timestamp}}@example.com\",\n  \"password\": \"Test123!\",\n  \"role_id\": {{adminRoleId}}\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/signup",
+          "host": ["{{baseUrl}}"],
+          "path": ["signup"]
+        }
+      }
+    },
+    {
+      "name": "Login - Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"customer@commerce.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "if (jsonData.token) {",
+              "  pm.collectionVariables.set(\"token\", jsonData.token);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Login - Store",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"store@commerce.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "if (jsonData.token) {",
+              "  pm.collectionVariables.set(\"token\", jsonData.token);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Login - Admin",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@commerce.com\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["login"]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const jsonData = pm.response.json();",
+              "if (jsonData.token) {",
+              "  pm.collectionVariables.set(\"token\", jsonData.token);",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Verify Token",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/verify",
+          "host": ["{{baseUrl}}"],
+          "path": ["verify"]
+        }
+      }
+    },
+    {
+      "name": "Addresses - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/user/address",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "address"]
+        }
+      }
+    },
+    {
+      "name": "Addresses - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"ev adresi\",\n  \"name\": \"Alişan\",\n  \"surname\": \"Karababa\",\n  \"phone\": \"05376845834\",\n  \"city\": \"istanbul\",\n  \"district\": \"esenler\",\n  \"neighborhood\": \"adres detayları\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/address",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "address"]
+        }
+      }
+    },
+    {
+      "name": "Addresses - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": {{addressId}},\n  \"title\": \"ev adresi\",\n  \"name\": \"Alişan\",\n  \"surname\": \"Karababa\",\n  \"phone\": \"05376845834\",\n  \"city\": \"istanbul\",\n  \"district\": \"esenler\",\n  \"neighborhood\": \"adres detayları güncellendi\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/address",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "address"]
+        }
+      }
+    },
+    {
+      "name": "Addresses - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/user/address/{{addressId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "address", "{{addressId}}"]
+        }
+      }
+    },
+    {
+      "name": "Cards - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/user/card",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "card"]
+        }
+      }
+    },
+    {
+      "name": "Cards - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"card_no\": \"1234123412341234\",\n  \"expire_month\": 12,\n  \"expire_year\": 2025,\n  \"name_on_card\": \"Ali Baş\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/card",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "card"]
+        }
+      }
+    },
+    {
+      "name": "Cards - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id\": \"{{cardId}}\",\n  \"card_no\": \"1234123412341234\",\n  \"expire_month\": 1,\n  \"expire_year\": 2030,\n  \"name_on_card\": \"Ahmet Taş\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/user/card",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "card"]
+        }
+      }
+    },
+    {
+      "name": "Cards - Delete",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/user/card/{{cardId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["user", "card", "{{cardId}}"]
+        }
+      }
+    },
+    {
+      "name": "Orders - Get All",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/order",
+          "host": ["{{baseUrl}}"],
+          "path": ["order"]
+        }
+      }
+    },
+    {
+      "name": "Orders - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "{{token}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"address_id\": {{addressId}},\n  \"order_date\": \"2024-01-10T14:18:30\",\n  \"card_no\": 1234123412341234,\n  \"card_name\": \"Ali Baş\",\n  \"card_expire_month\": 12,\n  \"card_expire_year\": 2025,\n  \"card_ccv\": 321,\n  \"price\": 1919,\n  \"products\": [\n    {\n      \"product_id\": 12,\n      \"count\": 1,\n      \"detail\": \"açık mavi - xl\"\n    },\n    {\n      \"product_id\": 13,\n      \"count\": 2,\n      \"detail\": \"siyah - lg\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/order",
+          "host": ["{{baseUrl}}"],
+          "path": ["order"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://workintech-fe-ecommerce.onrender.com"
+    },
+    {
+      "key": "customerRoleId",
+      "value": "1"
+    },
+    {
+      "key": "storeRoleId",
+      "value": "2"
+    },
+    {
+      "key": "adminRoleId",
+      "value": "3"
+    },
+    {
+      "key": "productId",
+      "value": "322"
+    },
+    {
+      "key": "addressId",
+      "value": "1"
+    },
+    {
+      "key": "cardId",
+      "value": "1"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}
