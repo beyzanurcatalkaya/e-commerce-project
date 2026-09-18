@@ -1041,9 +1041,148 @@ function CreateOrder() {
                       </div>
                     )}
 
-                    <div className="mt-[24px]">
+                    {isCardFormOpen && (
+                      <div className="mt-[24px] pt-[24px] border-t border-[#E6E6E6]">
+                        <h3 className="text-[#252B42] text-[18px] leading-[26px] font-bold mb-[18px]">
+                          {editingCard ? "Kartı Düzenle" : "Yeni Kart Ekle"}
+                        </h3>
+
+                        <form
+                          onSubmit={handleSubmitCard(onSubmitCard)}
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-[18px]"
+                        >
+                          <div>
+                            <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
+                              Kart Üzerindeki İsim
+                            </label>
+
+                            <input
+                              type="text"
+                              className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none"
+                              {...registerCard("name_on_card", {
+                                required: "Kart üzerindeki isim zorunludur.",
+                              })}
+                            />
+
+                            {cardErrors.name_on_card && (
+                              <p className="text-red-500 text-[13px] mt-[5px]">
+                                {cardErrors.name_on_card.message}
+                              </p>
+                            )}
+                          </div>
+
+                          <div>
+                            <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
+                              Kart Numarası
+                            </label>
+
+                            <input
+                              type="text"
+                              maxLength={19}
+                              placeholder="1234123412341234"
+                              className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none"
+                              {...registerCard("card_no", {
+                                required: "Kart numarası zorunludur.",
+                                validate: (value) =>
+                                  /^\d{16}$/.test(value.replace(/\s/g, "")) ||
+                                  "Kart numarası 16 haneli olmalıdır.",
+                              })}
+                            />
+
+                            {cardErrors.card_no && (
+                              <p className="text-red-500 text-[13px] mt-[5px]">
+                                {cardErrors.card_no.message}
+                              </p>
+                            )}
+                          </div>
+
+                          <div>
+                            <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
+                              Son Kullanma Ay
+                            </label>
+
+                            <select
+                              className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none bg-white"
+                              {...registerCard("expire_month", {
+                                required: "Ay seçimi zorunludur.",
+                              })}
+                            >
+                              <option value="">Ay</option>
+
+                              {Array.from(
+                                { length: 12 },
+                                (_, index) => index + 1
+                              ).map((month) => (
+                                <option key={month} value={month}>
+                                  {month}
+                                </option>
+                              ))}
+                            </select>
+
+                            {cardErrors.expire_month && (
+                              <p className="text-red-500 text-[13px] mt-[5px]">
+                                {cardErrors.expire_month.message}
+                              </p>
+                            )}
+                          </div>
+
+                          <div>
+                            <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
+                              Son Kullanma Yıl
+                            </label>
+
+                            <select
+                              className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none bg-white"
+                              {...registerCard("expire_year", {
+                                required: "Yıl seçimi zorunludur.",
+                              })}
+                            >
+                              <option value="">Yıl</option>
+
+                              {Array.from({ length: 12 }, (_, index) => {
+                                return new Date().getFullYear() + index;
+                              }).map((year) => (
+                                <option key={year} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </select>
+
+                            {cardErrors.expire_year && (
+                              <p className="text-red-500 text-[13px] mt-[5px]">
+                                {cardErrors.expire_year.message}
+                              </p>
+                            )}
+                          </div>
+
+                          <div className="sm:col-span-2 flex flex-col sm:flex-row gap-[12px] justify-end">
+                            <button
+                              type="button"
+                              onClick={closeCardForm}
+                              className="h-[46px] px-[24px] border border-[#DDDDDD] rounded-[5px] text-[#252B42] text-[14px] font-bold"
+                            >
+                              Vazgeç
+                            </button>
+
+                            <button
+                              type="submit"
+                              disabled={isCardSubmitting}
+                              className="h-[46px] px-[24px] bg-[#F47B20] rounded-[5px] text-white text-[14px] font-bold disabled:opacity-60 flex items-center justify-center gap-[8px]"
+                            >
+                              {isCardSubmitting && (
+                                <span className="w-[16px] h-[16px] border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              )}
+
+                              {editingCard ? "Güncelle" : "Kaydet"}
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    )}
+
+                    <div className="mt-[24px] pt-[24px] border-t border-[#E6E6E6]">
                       <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
-                        CVV
+                        Ödemeyi seçtiğiniz/eklediğiniz kart için CVV
                       </label>
 
                       <input
@@ -1108,144 +1247,6 @@ function CreateOrder() {
                   </div>
                 </div>
 
-                {isCardFormOpen && (
-                  <div className="p-[28px] border-t border-[#E6E6E6] bg-[#FAFAFA]">
-                    <h3 className="text-[#252B42] text-[22px] leading-[30px] font-bold mb-[20px]">
-                      {editingCard ? "Kartı Düzenle" : "Yeni Kart Ekle"}
-                    </h3>
-
-                    <form
-                      onSubmit={handleSubmitCard(onSubmitCard)}
-                      className="grid grid-cols-1 md:grid-cols-2 gap-[18px]"
-                    >
-                      <div>
-                        <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
-                          Kart Üzerindeki İsim
-                        </label>
-
-                        <input
-                          type="text"
-                          className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none"
-                          {...registerCard("name_on_card", {
-                            required: "Kart üzerindeki isim zorunludur.",
-                          })}
-                        />
-
-                        {cardErrors.name_on_card && (
-                          <p className="text-red-500 text-[13px] mt-[5px]">
-                            {cardErrors.name_on_card.message}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
-                          Kart Numarası
-                        </label>
-
-                        <input
-                          type="text"
-                          maxLength={19}
-                          placeholder="1234123412341234"
-                          className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none"
-                          {...registerCard("card_no", {
-                            required: "Kart numarası zorunludur.",
-                            validate: (value) =>
-                              /^\d{16}$/.test(value.replace(/\s/g, "")) ||
-                              "Kart numarası 16 haneli olmalıdır.",
-                          })}
-                        />
-
-                        {cardErrors.card_no && (
-                          <p className="text-red-500 text-[13px] mt-[5px]">
-                            {cardErrors.card_no.message}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
-                          Son Kullanma Ay
-                        </label>
-
-                        <select
-                          className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none bg-white"
-                          {...registerCard("expire_month", {
-                            required: "Ay seçimi zorunludur.",
-                          })}
-                        >
-                          <option value="">Ay</option>
-
-                          {Array.from(
-                            { length: 12 },
-                            (_, index) => index + 1
-                          ).map((month) => (
-                            <option key={month} value={month}>
-                              {month}
-                            </option>
-                          ))}
-                        </select>
-
-                        {cardErrors.expire_month && (
-                          <p className="text-red-500 text-[13px] mt-[5px]">
-                            {cardErrors.expire_month.message}
-                          </p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label className="block text-[#252B42] text-[14px] font-bold mb-[8px]">
-                          Son Kullanma Yıl
-                        </label>
-
-                        <select
-                          className="w-full h-[48px] border border-[#DDDDDD] rounded-[5px] px-[14px] outline-none bg-white"
-                          {...registerCard("expire_year", {
-                            required: "Yıl seçimi zorunludur.",
-                          })}
-                        >
-                          <option value="">Yıl</option>
-
-                          {Array.from({ length: 12 }, (_, index) => {
-                            return new Date().getFullYear() + index;
-                          }).map((year) => (
-                            <option key={year} value={year}>
-                              {year}
-                            </option>
-                          ))}
-                        </select>
-
-                        {cardErrors.expire_year && (
-                          <p className="text-red-500 text-[13px] mt-[5px]">
-                            {cardErrors.expire_year.message}
-                          </p>
-                        )}
-                      </div>
-
-                      <div className="md:col-span-2 flex flex-col sm:flex-row gap-[12px] justify-end">
-                        <button
-                          type="button"
-                          onClick={closeCardForm}
-                          className="h-[46px] px-[24px] border border-[#DDDDDD] rounded-[5px] text-[#252B42] text-[14px] font-bold"
-                        >
-                          Vazgeç
-                        </button>
-
-                        <button
-                          type="submit"
-                          disabled={isCardSubmitting}
-                          className="h-[46px] px-[24px] bg-[#F47B20] rounded-[5px] text-white text-[14px] font-bold disabled:opacity-60 flex items-center justify-center gap-[8px]"
-                        >
-                          {isCardSubmitting && (
-                            <span className="w-[16px] h-[16px] border-2 border-white border-t-transparent rounded-full animate-spin" />
-                          )}
-
-                          {editingCard ? "Güncelle" : "Kaydet"}
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                )}
               </section>
             )}
           </div>
