@@ -49,6 +49,9 @@ public class AuthService {
 
         Role role = roleRepository.findById(request.roleId())
                 .orElseThrow(() -> new BadRequestException("Geçersiz rol id."));
+        if ("admin".equalsIgnoreCase(role.getName())) {
+            throw new BadRequestException("Admin rolü ile herkese açık kayıt yapılamaz.");
+        }
 
         User user = new User();
         user.setName(request.name());
